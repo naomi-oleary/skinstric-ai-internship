@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, } from 'react';
+import Link from 'next/link';
 import Header1 from '../components/header-1';
 import Footer1 from '../components/footer';
 import BackButton from '../components/backButton';
@@ -8,10 +9,6 @@ import ForwardButton from '../components/forwardButton';
 import StartButton from '../components/startButton';
 
 export default function Landing() {
-
-    const nextClickHandler = () => {
-        // useState change of frame here
-    }
 
     const [ isForwardActive, setIsForwardActive ] = useState(false);
 
@@ -33,20 +30,23 @@ export default function Landing() {
                     </div>
                 </div>
                 <div className="relative">
-                    <span className="fixed right-[-75] top-1/2 translate-x-1/2 -translate-y-1/2 rotate-45 w-[70.7107dvh] h-[70.7107dvh] border-2 border-dotted border-[#A0A4AB] pointer-events-none"/>
-                    <span className={`fixed right-[-75] top-1/2 translate-x-1/2 -translate-y-1/2 rotate-45 w-[70.7107dvh] h-[70.7107dvh] border-2 border-dotted border-[#A0A4AB] pointer-events-none transition-all duration-700 ease-out ${
+                    <span className="absolute right-[-75] top-1/2 translate-x-1/2 -translate-y-1/2 rotate-45 w-[70.7107dvh] h-[70.7107dvh] border-2 border-dotted border-[#A0A4AB] pointer-events-none"/>
+                    <span className={`absolute right-[-75] top-1/2 translate-x-1/2 -translate-y-1/2 rotate-45 w-[70.7107dvh] h-[70.7107dvh] border-2 border-dotted border-[#A0A4AB] pointer-events-none transition-all duration-700 ease-out ${
                         isForwardActive ? "scale-[1.15] opacity-50" : "scale-100 opacity-0"
                     }`} />
-                    <span className={`fixed right-[-75] top-1/2 translate-x-1/2 -translate-y-1/2 rotate-45 w-[70.7107dvh] h-[70.7107dvh] border-2 border-dotted border-[#A0A4AB] pointer-events-none transition-all duration-700 ease-out ${
+                    <span className={`absolute right-[-75] top-1/2 translate-x-1/2 -translate-y-1/2 rotate-45 w-[70.7107dvh] h-[70.7107dvh] border-2 border-dotted border-[#A0A4AB] pointer-events-none transition-all duration-700 ease-out ${
                         isForwardActive ? "scale-[1.30] opacity-25" : "scale-100 opacity-0"
                     }`} />
-                    <div 
-                        onClick={() => setIsForwardActive(true)}
-                        className="flex items-center gap-5 cursor-pointer relative z-10"
-                    >
-                        <p>TAKE TEST</p>
-                        <ForwardButton />
-                    </div>
+                    <Link href="/questions">
+                        <div 
+                            onMouseEnter={() => setIsForwardActive(true)}
+                            onMouseLeave={() => setIsForwardActive(false)}
+                            className="flex items-center gap-5 cursor-pointer relative z-10"
+                        >
+                            <p>TAKE TEST</p>
+                            <ForwardButton />
+                        </div>
+                    </Link>
                 </div>
             </div>
             <div 
